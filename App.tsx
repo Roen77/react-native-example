@@ -6,15 +6,21 @@
  */
 
 import React from 'react';
-
+import 'react-native-gesture-handler';
 import {useColorScheme} from 'react-native';
 
 import RootNavigation from './src/navigation/RootNavigation';
+import {QueryClientProvider} from '@tanstack/react-query';
+import {queryClient} from './src/react-query/queryClient';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
-  return <RootNavigation />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RootNavigation />
+    </QueryClientProvider>
+  );
 }
 
 // const styles = StyleSheet.create({
