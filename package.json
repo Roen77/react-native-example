@@ -7,7 +7,10 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "bundle:android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle",
+    "release:apk": "yarn run bundle:android && cd android && ./gradlew clean && ./gradlew assembleRelease && cd ..",
+    "release:aab": "yarn run bundle:android && cd android && ./gradlew clean && ./gradlew bundleRelease && cd .."
   },
   "dependencies": {
     "@react-navigation/material-bottom-tabs": "^6.2.19",
